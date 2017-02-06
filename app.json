@@ -1,0 +1,35 @@
+{
+    "id": "info.amersfoort.jorenbroekema",
+    "name": {
+        "en": "TestAppLedRing"
+    },
+    "version": "0.0.1",
+    "compatibility": "1.x",
+    "author": {
+        "name": "Joren Broekema",
+        "email": "joren_broekema@hotmail.com"
+    },
+	"permissions":[
+		"homey:manager:ledring",
+		"homey:manager:speech-output",
+		"homey:manager:speech-input"
+	],
+	"speech": [
+		{
+			"id": "weather",
+			"importance": 1,
+			"triggers": {
+				"en": [ "weather" ],
+				"nl": [ "weer" ]
+			}
+		},
+		{
+			"id": "today",
+			"importance": 0.3,
+			"triggers": {
+				"en": [ "today" ],
+				"nl": [ "vandaag" ]
+			}
+		}
+	]
+}
