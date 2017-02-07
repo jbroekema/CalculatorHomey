@@ -23,6 +23,14 @@
 				"nl": [ "bereken" ]
 			}
 		},
+    {
+			"id": "whatis",
+			"importance": 0.3,
+			"triggers": {
+				"en": [ "what is" ],
+				"nl": [ "wat is" ]
+			}
+		},
 		{
 			"id": "minus",
 			"importance": 0.4,
@@ -41,7 +49,7 @@
 		},
     {
 			"id": "times",
-			"importance": 0.2,
+			"importance": 0.25,
 			"triggers": {
 				"en": [ "times" ],
 				"nl": [ "keer" ]
@@ -55,5 +63,23 @@
 				"nl": [ "gedeeld door" ]
 			}
 		}
-	]
+	],
+  "speechExamples":[
+    {
+      "en" : "Calculate 12 plus 14",
+      "nl" : "Bereken 12 plus 14"
+    },
+    {
+      "en" : "Calculate 20 divided by 5",
+      "nl" : "Bereken 20 gedeeld door 5"
+    },
+    {
+      "en" : "Calculate 4 minus 2",
+      "nl" : "Bereken 4 min 2"
+    },
+    {
+      "en" : "Calculate 5 times 6",
+      "nl" : "Bereken 5 keer 6"
+    }
+  ]
 }
