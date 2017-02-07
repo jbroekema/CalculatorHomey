@@ -3,7 +3,6 @@
 const language = Homey.manager('i18n').getLanguage();
 
 module.exports.init = function init() {
-
 	Homey.log("Hello world!");
 	Homey.manager('ledring').animate('loading',
 		{
@@ -17,7 +16,6 @@ module.exports.init = function init() {
 			console.log("Animation played succesfully");
 		}
 	);
-	Homey.manager('speech-output').say("Hello world");
 	Homey.manager('speech-input').on('speech', listenForSpeechEvents);
 }
 
@@ -38,13 +36,12 @@ function listenForSpeechEvents(speech){
 		}, 10000);
 
 		if(!options.abort) parseSpeechTriggers(speech, options);
-
-		//speech.say("Ask me");
-
 }
 
 function parseSpeechTriggers(speech, options){
-	console.log("Checking for triggers..");
+	const speechText = speech.transcript;
+	var speechReg = speechText.match( new RegExp( "(\\d+)\\s\\w+\\s?\\w*\\s(\\d+)" ) );
+
 	speech.triggers.forEach(trigger => {
 		switch (trigger.id){
 			case 'calculate':
@@ -53,32 +50,23 @@ function parseSpeechTriggers(speech, options){
 				break;
 			case 'plus':
 				options.plusTrigger = true;
-				console.log(trigger.id);
-				const textPlus = speech.transcript;
-				var result = textPlus.match( new RegExp( "(\\d+)\\s" + trigger.id + "\\s(\\d+)" ) );
-				console.log(result);
-				console.log(parseInt(result[1]) + parseInt(result[2]));
+				console.log(parseInt(speechReg[1]) + parseInt(speechReg[2]));
 				break;
 			case 'minus':
 				options.minusTrigger = true;
 				options.dateTranscript = (options.language === 'en') ? 'minus' : 'min';
+				console.log(parseInt(speechReg[1]) - parseInt(speechReg[2]));
 				break;
 			case 'times':
 				options.timesTrigger = true;
 				options.dateTranscript = (options.language === 'en') ? 'times' : 'keer';
+				console.log(parseInt(speechReg[1]) * parseInt(speechReg[2]));
 			  break;
 			case 'divided':
 				options.dividedTrigger = true;
 				options.dateTranscript = (options.language === 'en') ? 'divided by' : 'gedeeld door';
+				console.log(parseInt(speechReg[1]) / parseInt(speechReg[2]));
 				break;
 		}
 	});
 }
-
-/*
-var transcript = "16 plus 32"
-var trigger = {
-    id: "keer"
-}
-var result = transcript.match( new RegExp( "(\\d+)\\s" + trigger.id + "\\s(\\d+)" ) );
-*/
