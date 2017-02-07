@@ -9,7 +9,7 @@ module.exports.init = function init() {
 		{
 			color: 'purple',
 			rpm: 10 // change rotations per minute
-		},'INFORMATIVE', 30000,
+		},'INFORMATIVE', 3000,
 
 		// callback
 		function( err, success ) {
@@ -18,12 +18,11 @@ module.exports.init = function init() {
 		}
 	);
 	Homey.manager('speech-output').say("Hello world");
+	Homey.manager('speech-input').on('speech', listenForSpeechEvents);
 }
 
-function listenForSpeechEvents(){
-	Homey.manager('speech-input').on('speech', speech => {
-		Homey.log("Incoming speech event..");
-
+function listenForSpeechEvents(speech){
+		console.log("Incoming speech event..");
 		const options = {
 				calculateTrigger: false,
 				minusTrigger: false,
@@ -41,12 +40,11 @@ function listenForSpeechEvents(){
 		if(!options.abort) parseSpeechTriggers(speech, options);
 
 		//speech.say("Ask me");
-	});
 
 }
 
 function parseSpeechTriggers(speech, options){
-	Homey.log("Checking for triggers..");
+	console.log("Checking for triggers..");
 	speech.triggers.forEach(trigger => {
 		switch (trigger.id){
 			case 'calculate':
@@ -55,8 +53,11 @@ function parseSpeechTriggers(speech, options){
 				break;
 			case 'plus':
 				options.plusTrigger = true;
-				const textPlus = speech.transcript.substring(trigger.position - 3, trigger.position + 7);
+				console.log(trigger.id);
+				const textPlus = speech.transcript;
 				var result = textPlus.match( new RegExp( "(\\d+)\\s" + trigger.id + "\\s(\\d+)" ) );
+				console.log(result);
+				console.log(parseInt(result[1]) + parseInt(result[2]));
 				break;
 			case 'minus':
 				options.minusTrigger = true;
