@@ -16,19 +16,43 @@
 	],
 	"speech": [
 		{
-			"id": "weather",
-			"importance": 1,
+			"id": "calculate",
+			"importance": 0.7,
 			"triggers": {
-				"en": [ "weather" ],
-				"nl": [ "weer" ]
+				"en": [ "calculate" ],
+				"nl": [ "bereken" ]
 			}
 		},
 		{
-			"id": "today",
-			"importance": 0.3,
+			"id": "minus",
+			"importance": 0.4,
 			"triggers": {
-				"en": [ "today" ],
-				"nl": [ "vandaag" ]
+				"en": [ "minus" ],
+				"nl": [ "min" ]
+			}
+		},
+    {
+			"id": "plus",
+			"importance": 0.4,
+			"triggers": {
+				"en": [ "plus" ],
+				"nl": [ "plus" ]
+			}
+		},
+    {
+			"id": "times",
+			"importance": 0.2,
+			"triggers": {
+				"en": [ "times" ],
+				"nl": [ "keer" ]
+			}
+		},
+    {
+			"id": "divided",
+			"importance": 0.4,
+			"triggers": {
+				"en": [ "divided by" ],
+				"nl": [ "gedeeld door" ]
 			}
 		}
 	]

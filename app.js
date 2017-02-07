@@ -1,7 +1,9 @@
 "use strict";
 
-function init() {
-	
+const language = Homey.manager('i18n').getLanguage();
+
+module.exports.init = function init() {
+
 	Homey.log("Hello world!");
 	Homey.manager('ledring').animate(
 		// animation name (choose from loading, pulse, progress, solid)
@@ -28,10 +30,47 @@ function init() {
 	Homey.manager('speech-output').say("Hello world");
 	Homey.manager('speech-input').on('speech', speech => {
 		console.log("Incoming speech event..");
-		
-		speech.say("Ask me");
+
+		const options = {
+				calculateTrigger: false,
+				minusTrigger: false,
+				plusTrigger: false,
+				timesTrigger: false,
+				dividedTrigger: false,
+				language : language,
+				dateTranscript: (language === 'en') ? 'calculate' : 'bereken',
+		},
+
+		const timeout = setTimeout(() => {
+			options.abort = true;
+		}, 10000);
+
+		if(!abort) parseSpeechTriggers(speech, options);
+
+		//speech.say("Ask me");
 	});
-	
+
 }
 
-module.exports.init = init;
+function parseSpeechTriggers(speech, options){
+
+	speech.triggers.forEach(trigger = > {
+		switch (trigger.id){
+			case 'calculate':
+				options.calculateTrigger = true;
+				break;
+			case 'plus':
+				options.plusTrigger = true;
+				break;
+			case 'minus':
+				options.minusTrigger = true;
+				break;
+			case 'times':
+				options.timesTrigger = true;
+			  break;
+			case 'divided':
+				options.dividedTrigger = true;
+				break;
+		}
+	});
+}
