@@ -74,8 +74,6 @@ function parseSpeechTriggers(speech, options){
 					break;
 			}
 		});
-	}else{
-		parseSpeechResponse(speech, null, options);
 	}
 	parseSpeechResponse(speech, result, options);
 }
