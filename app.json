@@ -8,6 +8,10 @@
   "author": {
     "name": "Athom B.V."
   },
+  "tags":{
+    "en":[ "calculator", "calculate" ],
+    "nl":[ "rekenmachine", "reken" ]
+  },
   "description": {
     "en": "Ask Homey to calculate something",
     "nl": "Vraag Homey om iets voor je te berekenen"
