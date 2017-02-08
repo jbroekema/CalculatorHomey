@@ -1,10 +1,12 @@
 {
   "id": "info.amersfoort.jorenbroekema",
   "name": {
-    "en": "Calculator"
+    "en": "Calculator",
+    "nl": "Rekenmachine"
   },
   "version": "0.0.1",
-  "compatibility": "1.x",
+  "compatibility": "0.x",
+  "category": "tools",
   "author": {
     "name": "Athom B.V."
   },
@@ -15,7 +17,6 @@
   "description": {
     "en": "Ask Homey to calculate something",
     "nl": "Vraag Homey om iets voor je te berekenen"
-
   },
   "permissions":[
     "homey:manager:speech-output",
