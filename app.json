@@ -1,85 +1,178 @@
 {
-    "id": "info.amersfoort.jorenbroekema",
-    "name": {
-        "en": "TestAppLedRing"
+  "id": "info.amersfoort.jorenbroekema",
+  "name": {
+    "en": "Calculator"
+  },
+  "version": "0.0.1",
+  "compatibility": "1.x",
+  "author": {
+    "name": "Athom B.V."
+  },
+  "description": {
+    "en": "Ask Homey to calculate something",
+    "nl": "Vraag Homey om iets voor je te berekenen"
+
+  },
+  "permissions":[
+    "homey:manager:speech-output",
+    "homey:manager:speech-input"
+  ],
+  "images": {
+    "large": "./assets/images/large.jpg",
+    "small": "./assets/images/small.jpg"
+  },
+  "dependencies":{
+  },
+  "flow": {
+    "actions":[
+      {
+        "id": "addition",
+        "title" : {
+          "en": "Adding",
+          "nl": "Optellen"
+        },
+        "args":[
+          {
+            "name": "numberone",
+            "type": "number"
+          },
+          {
+            "name": "numbertwo",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "subtraction",
+        "title" : {
+          "en": "Subtracting",
+          "nl": "Van elkaar aftrekken"
+        },
+        "args":[
+          {
+            "name": "numberone",
+            "type": "number"
+          },
+          {
+            "name": "numbertwo",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "multiplication",
+        "title" : {
+          "en": "Multiplying",
+          "nl": "Vermenigvuldigen"
+        },
+        "args":[
+          {
+            "name": "numberone",
+            "type": "number"
+          },
+          {
+            "name": "numbertwo",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "division",
+        "title" : {
+          "en": "Dividing",
+          "nl": "Door elkaar delen"
+        },
+        "args":[
+          {
+            "name": "numberone",
+            "type": "number"
+          },
+          {
+            "name": "numbertwo",
+            "type": "number"
+          }
+        ]
+      }
+    ]
+  },
+  "speech": [
+    {
+      "id": "calculate",
+      "importance": 0.8,
+      "triggers": {
+        "en": [
+          "calculate",
+          "compute"
+        ],
+        "nl": [
+          "bereken",
+          "reken uit"
+        ]
+      }
     },
-    "version": "0.0.1",
-    "compatibility": "1.x",
-    "author": {
-        "name": "Joren Broekema",
-        "email": "joren_broekema@hotmail.com"
+    {
+      "id": "calculate_alternative",
+      "importance": 0.3,
+      "triggers": {
+        "en": [
+          "what is",
+          "how much is"
+        ],
+        "nl": [
+          "wat is",
+          "hoeveel is"
+        ]
+      }
     },
-	"permissions":[
-		"homey:manager:ledring",
-		"homey:manager:speech-output",
-		"homey:manager:speech-input"
-	],
-	"speech": [
-		{
-			"id": "calculate",
-			"importance": 0.7,
-			"triggers": {
-				"en": [ "calculate" ],
-				"nl": [ "bereken" ]
-			}
-		},
     {
-			"id": "whatis",
-			"importance": 0.3,
-			"triggers": {
-				"en": [ "what is" ],
-				"nl": [ "wat is" ]
-			}
-		},
-		{
-			"id": "minus",
-			"importance": 0.4,
-			"triggers": {
-				"en": [ "minus" ],
-				"nl": [ "min" ]
-			}
-		},
+      "id": "minus",
+      "importance": 0.4,
+      "triggers": {
+        "en": [ "minus" ],
+        "nl": [ "min" ]
+      }
+    },
     {
-			"id": "plus",
-			"importance": 0.4,
-			"triggers": {
-				"en": [ "plus" ],
-				"nl": [ "plus" ]
-			}
-		},
+      "id": "plus",
+      "importance": 0.4,
+      "triggers": {
+        "en": [ "plus" ],
+        "nl": [ "plus" ]
+      }
+    },
     {
-			"id": "times",
-			"importance": 0.25,
-			"triggers": {
-				"en": [ "times" ],
-				"nl": [ "keer" ]
-			}
-		},
+      "id": "times",
+      "importance": 0.25,
+      "triggers": {
+        "en": [ "times" ],
+        "nl": [ "keer" ]
+      }
+    },
     {
-			"id": "divided",
-			"importance": 0.4,
-			"triggers": {
-				"en": [ "divided by" ],
-				"nl": [ "gedeeld door" ]
-			}
-		}
-	],
+      "id": "divided",
+      "importance": 0.4,
+      "triggers": {
+        "en": [ "divided by" ],
+        "nl": [ "gedeeld door" ]
+      }
+    }
+  ],
   "speechExamples":[
     {
       "en" : "Calculate 12 plus 14",
       "nl" : "Bereken 12 plus 14"
     },
     {
-      "en" : "Calculate 20 divided by 5",
-      "nl" : "Bereken 20 gedeeld door 5"
+      "en" : "Compute 20 divided by 5",
+      "nl" : "Reken uit wat 20 gedeeld door 5 is"
     },
     {
-      "en" : "Calculate 4 minus 2",
-      "nl" : "Bereken 4 min 2"
+      "en" : "How much is 4 minus 2",
+      "nl" : "Hoeveel is 4 min 2"
     },
     {
-      "en" : "Calculate 5 times 6",
-      "nl" : "Bereken 5 keer 6"
+      "en" : "What is 5 times 6",
+      "nl" : "Wat is 5 keer 6"
     }
   ]
 }
