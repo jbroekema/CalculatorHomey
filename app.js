@@ -80,10 +80,11 @@ function parseSpeechTriggers(speech, options){
 
 function parseSpeechResponse(speech, result, options){
 	console.log("Creating response..");
+	result = result.toFixed(2);
 	var repeatText = (language === 'en') ? 'Can you repeat that please' : 'Kun je dat herhalen';
 	if(result == null) {
 		speech.say(repeatText);
 	}else{
-		speech.say(result.toString());
+		speech.say(result);
 	}
 }
